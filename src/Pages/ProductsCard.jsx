@@ -1,9 +1,16 @@
 import React from "react";
 import { Link } from "react-router";
+import { addToStroedDB } from "../Utillity/AddProductsDB";
 
 const ProductsCard = ({ product }) => {
 //   console.log(product);
-const {category,name,price,image} = product;
+const {id,category,name,price,image} = product;
+
+const handleAddToWishList = () => {
+  // console.log(id)
+  addToStroedDB(id); // ক্লিক করলে ডেটা যোগ হবে
+};
+
   return (
     <div className="card bg-base-100 w-full shadow-sm">
       <figure>
@@ -21,7 +28,10 @@ const {category,name,price,image} = product;
           category: $ {category}
         </p>
         <div className="card-actions justify-end">
-          <Link to={""} className="btn">Wish List</Link>
+          <button onClick={handleAddToWishList}  className="btn">Add Wish List</button>
+        </div>
+        <div className="card-actions justify-end">
+          <Link onClick={handleAddToWishList} to={"/wishList"} className="btn">Go ToWish List</Link>
         </div>
       </div>
     </div>
