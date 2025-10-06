@@ -18,7 +18,7 @@ const {id,category,name,price,image,description} = product;
            {description}
           </p>
           <div className="card-actions justify-end">
-            <button className="btn ">Buy Now</button>
+            <button className="btn ">{price}</button>
           </div>
         </div>
       </div>
