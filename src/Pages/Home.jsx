@@ -11,7 +11,7 @@ const Home = () => {
     // console.log(products)
     return (
         <div className='container'>
-            <div className='flex justify-between items-center my-4'>
+            <div className='md:flex justify-between items-center my-5 text-center'>
                 <div>
                 <h1 className='font-bold'>Featured Products</h1>
                 </div>
@@ -19,7 +19,7 @@ const Home = () => {
                 <Link className='btn' to={'/products'}>See All Products</Link>
                 </div>
             </div>
-            <div className='grid grid-cols-3 gap-5'>
+            <div className='grid md:grid-cols-3 gap-5'>
                  {
                 featuredProducts.map(product=><HomeProduct key={product.id} product={product}></HomeProduct>)
             }

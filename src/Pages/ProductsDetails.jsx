@@ -11,14 +11,14 @@ const ProductsDetails = () => {
 
 //   console.log(product);
   return (
-    <div className="card bg-base-100 w-96 shadow-sm">
+    <div className="card bg-base-100 w-full md:w-[600px] mx-auto shadow-sm">
       <figure>
         <img
           src={image}
           alt="Shoes"
         />
       </figure>
-      <div className="card-body">
+      <div className="card-body ">
         <h2 className="card-title">{name}</h2>
         <h2 className="card-title">{price}</h2>
         <p>

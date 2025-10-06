@@ -14,13 +14,12 @@ const Products = () => {
 //   console.log(searchProducts);
   return (
     <div className="container">
-      <div className="flex justify-between items-center my-4">
+      <div className="md:flex justify-between items-center my-4 text-center">
         <div>
           <h1 className="font-bold">
-            All Products{" "}
-            <span className="text-gray-500">
-              {" "}
-              {searchProducts.length} products fund
+            All Products {" "}
+             <span className="text-gray-500">
+               {searchProducts.length} products fund
             </span>
           </h1>
         </div>

@@ -1,41 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import useProducts from '../Hook/useProducts';
-import { getStroedProudcts } from '../Utillity/AddProductsDB';
+import { getStroedProducts } from '../Utillity/AddProductsDB';
+import WishList2 from './WishList2';
+
 
 const WishList = () => {
-    const {products} = useProducts()
-    const [adProduct,setAdProduct] = useState([]);
+    
+const {products} = useProducts()
+const [WishList,setWishList] = useState([]);
+// console.log(products)
 
-    useEffect(()=>{
-        const stroedId = getStroedProudcts();
-        const savedProducts = products.filter((p)=>stroedId.includes(p.id));
-        setAdProduct(savedProducts);
+useEffect(()=>{
+    const addToStroedDB = getStroedProducts()
+    // console.log(addToStroedDB)
+    const myStroedProducts = products.filter(item=>addToStroedDB.includes(item.id))
+    setWishList(myStroedProducts)
+    // console.log(myStroedProducts)
+},[products])
 
-    },[products])
    
     return (
-        <div className="container mx-auto py-6">
-      <h1 className="text-2xl font-bold mb-4">My Wish List</h1>
-
-      {adProduct.length === 0 ? (
-        <p>No products in wishlist yet.</p>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {adProduct.map((item) => (
-            <div key={item.id} className="card bg-base-100 shadow-md">
-              <figure>
-                <img src={item.image} alt={item.name} />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">{item.name}</h2>
-                <p>Price: ${item.price}</p>
-                <p>Category: {item.category}</p>
-              </div>
-            </div>
-          ))}
+       <div className='container'>
+        <div className='grid md:grid-cols-2 gap-5 my-5'>
+            {
+                WishList.map(product=><WishList2 product={product} key={product.id}></WishList2>)
+            }
         </div>
-      )}
-    </div>
+       </div>
   );
 };
 

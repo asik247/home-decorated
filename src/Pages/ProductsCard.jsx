@@ -6,11 +6,11 @@ const ProductsCard = ({ product }) => {
 //   console.log(product);
 const {id,category,name,price,image} = product;
 
-const handleAddToWishList = () => {
+const handleWishList = (id)=>{
   // console.log(id)
-  addToStroedDB(id); // ক্লিক করলে ডেটা যোগ হবে
-};
+  addToStroedDB(id)
 
+}
   return (
     <div className="card bg-base-100 w-full shadow-sm">
       <figure>
@@ -28,11 +28,15 @@ const handleAddToWishList = () => {
           category: $ {category}
         </p>
         <div className="card-actions justify-end">
-          <button onClick={handleAddToWishList}  className="btn">Add Wish List</button>
+
+
+          <button onClick={()=>handleWishList(id)} className="btn">Add Wish List</button>
+
+
         </div>
-        <div className="card-actions justify-end">
-          <Link onClick={handleAddToWishList} to={"/wishList"} className="btn">Go ToWish List</Link>
-        </div>
+        {/* <div className="card-actions justify-end">
+          <Link to={"/wishList"} className="btn">Go ToWish List</Link>
+        </div> */}
       </div>
     </div>
   );
