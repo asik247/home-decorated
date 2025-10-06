@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useProducts from '../Hook/useProducts';
 import { getStroedProducts, removeFromStoredDB } from '../Utillity/AddProductsDB';
 import WishList2 from './WishList2';
+import { Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts';
 
 
 const WishList = () => {
@@ -59,6 +60,25 @@ const sortedList = getSortedItems()
                 sortedList.map(product=><WishList2 product={product} key={product.id} handleRemove={handleRemove}></WishList2>)
             }
         </div>
+        <div className='font-bold flex justify-center items-center my-8'>
+           
+
+             <BarChart
+            width={600}
+            height={400}
+            data={WishList}
+            // margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="category" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="price" fill="#8884d8" />
+            <Bar dataKey="id" fill="#8884d8" />
+          </BarChart>
+        </div>
+
        </div>
   );
 };

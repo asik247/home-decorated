@@ -17,6 +17,9 @@ const {id,category,name,price,image,description} = product;
           <p>
            {description}
           </p>
+          <p>
+           {category}
+          </p>
           <div className="card-actions flex justify-center items-center">
             <button className="btn ">{price}</button>
             <button onClick={()=>handleRemove(id)} className="btn ">Remove</button>
@@ -24,6 +27,7 @@ const {id,category,name,price,image,description} = product;
         </div>
       </div>
     </div>
+    
   );
 };
 
