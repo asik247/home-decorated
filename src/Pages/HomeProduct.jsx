@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 const HomeProduct = ({ product }) => {
 //   console.log(product);
-const {category,name,price,image} = product;
+const {id,category,name,price,image} = product;
   return (
     <div className="card bg-base-100 w-full shadow-sm">
       <figure>
@@ -21,7 +21,7 @@ const {category,name,price,image} = product;
          category:  {category}
         </p>
         <div className="card-actions justify-end">
-         <Link className="btn" to={""}>View Details</Link>
+         <Link className="btn" to={`/details/${id}`}>View Details</Link>
         </div>
       </div>
     </div>
