@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useProducts from '../Hook/useProducts';
-import { getStroedProducts } from '../Utillity/AddProductsDB';
+import { getStroedProducts, removeFromStoredDB } from '../Utillity/AddProductsDB';
 import WishList2 from './WishList2';
 
 
@@ -18,6 +18,15 @@ useEffect(()=>{
     setWishList(myStroedProducts)
     // console.log(myStroedProducts)
 },[products])
+
+
+// Remove stored data functio...
+
+const handleRemove = (id)=>{
+    removeFromStoredDB(id);
+    const remaining = WishList.filter(p=>p.id!==id);
+    setWishList(remaining);
+}
 
 const getSortedItems = ()=>{
     let sorted = [...WishList];
@@ -47,7 +56,7 @@ const sortedList = getSortedItems()
         </div>
         <div className='grid md:grid-cols-2 gap-5 my-5'>
             {
-                sortedList.map(product=><WishList2 product={product} key={product.id}></WishList2>)
+                sortedList.map(product=><WishList2 product={product} key={product.id} handleRemove={handleRemove}></WishList2>)
             }
         </div>
        </div>

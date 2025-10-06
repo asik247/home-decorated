@@ -1,6 +1,6 @@
 import React from "react";
 
-const WishList2 = ({ product }) => {
+const WishList2 = ({ product,handleRemove}) => {
 //   console.log(product);
 const {id,category,name,price,image,description} = product;
   return (
@@ -17,8 +17,9 @@ const {id,category,name,price,image,description} = product;
           <p>
            {description}
           </p>
-          <div className="card-actions justify-end">
+          <div className="card-actions flex justify-center items-center">
             <button className="btn ">{price}</button>
+            <button onClick={()=>handleRemove(id)} className="btn ">Remove</button>
           </div>
         </div>
       </div>

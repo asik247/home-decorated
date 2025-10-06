@@ -1,27 +1,3 @@
-// const getStroedProudcts = () => {
-//   const stroedDataSTR = localStorage.getItem("products");
-
-//   if (stroedDataSTR) {
-//     const stroedDataParse = JSON.parse(stroedDataSTR);
-//     return stroedDataParse;
-//   } else {
-//     return [];
-//   }
-// };
-
-// const addToStroedDB = (id) => {
-//   const stroedDataParse = getStroedProudcts();
-
-//   if (stroedDataParse.includes(id)) {
-//     alert("id already exist");
-//   } else {
-//     stroedDataParse.push(id);
-//     const data = JSON.stringify(stroedDataParse);
-//     localStorage.setItem("products", data);
-//   }
-// };
-// export { addToStroedDB, getStroedProudcts };
-
 
 const getStroedProducts = ()=>{
     const stroedDataSTR = localStorage.getItem('products');
@@ -45,4 +21,17 @@ const addToStroedDB = (id)=>{
         localStorage.setItem('products',data)
     }
 }
-export {addToStroedDB,getStroedProducts}
+
+
+
+// New Remove Function..
+const removeFromStoredDB = (id)=>{
+    const stroedDataParse = getStroedProducts();
+    const updated = stroedDataParse.filter(itemId=>itemId !==id);
+    localStorage.setItem('products',JSON.stringify(updated));
+
+}
+
+
+
+export {addToStroedDB,getStroedProducts,removeFromStoredDB}
